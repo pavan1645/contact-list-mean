@@ -1,0 +1,4 @@
+a.title:hover, a.title, a.title:visited, a.title:focus{
+    color: black;
+    text-decoration: none;
+}

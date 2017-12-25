@@ -1,0 +1,47 @@
+<div class="container">
+	<h2>Add Contact Names</h2>
+	<form (submit)="addContact()">
+		<div class="form-group row">
+			<div class="col-md-2">First Name:</div>
+			<input class="form-control col-md-3" type="text" name="first_name" [(ngModel)] = "first_name" #fname><br>
+		</div>
+		<div class="form-group row">
+			<div class="col-md-2">Last Name:</div>
+			<input class="form-control col-md-3" type="text" name="last_name" [(ngModel)] = "last_name"><br>
+		</div>
+		<div class="form-group row">
+			<div class="col-md-2">Phone:</div>
+			<input class="form-control col-md-3" type="text" name="phone" [(ngModel)] = "phone"><br>
+		</div>
+		<input class="btn btn-primary" type="submit" value="Submit">
+	</form>
+	<hr>
+	<table class="table table-bordered table-hover" style="table-layout: fixed; overflow-wrap: break-word">
+		<thead>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Phone</th>
+			<th>Action</th>
+		</thead>
+		<tbody *ngFor = "let contact of contacts">
+			<tr (click)="viewContact(contact)" *ngIf="selectedContacts.indexOf(contact)<0">
+				<td>{{contact.first_name}}</td>
+				<td>{{contact.last_name}}</td>
+				<td>{{contact.phone}}</td>
+				<td>
+					<button (click)="editContact(contact._id)"  class="btn btn-sm btn-primary">EDIT</button>
+					<button (click)="deleteContact(contact._id)" class="btn btn-sm btn-danger">DELETE</button>
+				</td>
+			</tr>
+			<tr *ngIf="selectedContacts.indexOf(contact)>=0">
+				<td><input type="text" class="form-control" [(ngModel)]="contact.first_name" name="first_name" /></td>
+				<td><input type="text" class="form-control" [(ngModel)]="contact.last_name" name="last_name" /></td>
+				<td><input type="text" class="form-control" [(ngModel)]="contact.phone" name="phone" /></td>
+				<td>
+					<button (click)="updateContact(contact)" class="btn btn-sm btn-success">SAVE</button>
+					<button (click)="deleteContact(contact._id)" class="btn btn-sm btn-danger">DELETE</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
