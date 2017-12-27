@@ -66,4 +66,19 @@ router.delete('/contact/:id', (req, res, next) => {
 	});
 });
 
+//aman 
+router.post('/aman', function(req, res, next) {
+	let aman = {
+		"ac":123456789012,
+		"s":"Guru Teg Bahadur Nagar",
+		"d":"Guru Teg Bahadur Nagar",
+		"sd":"2017/12/27",
+		"ed":"2017/12/27",
+		"ul":10,
+		"dl":10,
+		"pc":123456789012
+	}
+	res.json(aman);
+});
+
 module.exports = router;
